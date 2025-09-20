@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Roboto:wght@300;400;500;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design System Colors */
+:root {
+  --red-primary: #E53935;
+  --green-accent: #388E3C;
+  --blue-institutional: #1565C0;
+  --white: #FFFFFF;
+  --gray-light: #F5F5F5;
+  --text-black: #212121;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--blue-institutional);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--green-accent);
+}
+
+/* Smooth animations */
+* {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, 
+              transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Custom button hover effects */
+.btn-primary {
+  @apply bg-blue-600 hover:bg-green-500 text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-6 rounded-lg transition-all duration-200;
+}
+
+/* Card hover effects */
+.card {
+  @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-100;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* Typography classes */
+.text-heading {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+}
+
+.text-body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+.text-emphasis {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Custom animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in-up {
+  animation: slideInUp 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes pulse-success {
+  0%, 100% {
+    background-color: var(--green-accent);
+  }
+  50% {
+    background-color: #4CAF50;
+  }
+}
+
+.animate-pulse-success {
+  animation: pulse-success 2s ease-in-out infinite;
+}
+
+/* Quiz specific animations */
+@keyframes correctAnswer {
+  0% {
+    background-color: #F3F4F6;
+  }
+  50% {
+    background-color: #D1FAE5;
+  }
+  100% {
+    background-color: #D1FAE5;
+  }
+}
+
+@keyframes incorrectAnswer {
+  0% {
+    background-color: #F3F4F6;
+  }
+  50% {
+    background-color: #FEE2E2;
+  }
+  100% {
+    background-color: #FEE2E2;
+  }
+}
+
+.animate-correct {
+  animation: correctAnswer 0.5s ease-out;
+}
+
+.animate-incorrect {
+  animation: incorrectAnswer 0.5s ease-out;
+}
+
+/* Mobile responsive improvements */
+@media (max-width: 768px) {
+  .card {
+    @apply p-4;
+  }
+  
+  h1 {
+    @apply text-2xl;
+  }
+  
+  h2 {
+    @apply text-xl;
+  }
+  
+  .btn-primary, .btn-secondary {
+    @apply py-2 px-4 text-sm;
+  }
+}
+
+/* Focus states for accessibility */
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 2px solid var(--blue-institutional);
+  outline-offset: 2px;
+}
+
+/* Loading spinner */
+.spinner {
+  border: 3px solid var(--gray-light);
+  border-top: 3px solid var(--blue-institutional);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Progress bar custom styles */
+.progress-bar {
+  background: linear-gradient(90deg, var(--blue-institutional) 0%, var(--green-accent) 100%);
+  transition: width 0.5s ease-in-out;
+}
+
+/* Quiz feedback styles */
+.feedback-correct {
+  @apply bg-green-100 border-green-500 text-green-800;
+}
+
+.feedback-incorrect {
+  @apply bg-red-100 border-red-500 text-red-800;
+}
+
+.feedback-neutral {
+  @apply bg-blue-100 border-blue-500 text-blue-800;
+}
+
+/* Disabled button styles */
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button:disabled:hover {
+  transform: none;
+  background-color: inherit;
+}
